@@ -173,11 +173,19 @@ final class UpgradeBuild {
     }
 
     /*
+     * 8.2.x-dev => 8.2.x-dev
+     * 8.2.x-dev#a1b2c3 => 8.2.x-dev#a1b2c3
+     */
+    if (preg_match('/-dev(#[0-9a-f]+)?$/', $version_constraint)) {
+      return $version_constraint;
+    }
+
+    /*
      * dev-master => master-dev
      * dev-something_else#123abc => something_else-dev#123abc
      */
-    if (preg_match('/^dev-([A-Za-z0-9-_\.]+)(#[0-9a-f]+)?/', $version_constraint, $matches)) {
-      return $matches[1] . '-dev' . @$matches[2];
+    if (strpos($version_constraint, 'dev-') === 0) {
+      return preg_replace('\'/^dev-([A-Za-z0-9-_\.]+)(#[0-9a-f]+)?/', '$1-dev$2', $version_constraint);
     }
 
     /*
