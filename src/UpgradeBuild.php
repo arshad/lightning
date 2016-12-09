@@ -185,7 +185,7 @@ final class UpgradeBuild {
      * dev-something_else#123abc => something_else-dev#123abc
      */
     if (strpos($version_constraint, 'dev-') === 0) {
-      return preg_replace('\'/^dev-([A-Za-z0-9-_\.]+)(#[0-9a-f]+)?/', '$1-dev$2', $version_constraint);
+      return preg_replace('/^dev-([A-Za-z0-9-_\.]+)(#[0-9a-f]+)?/', '$1-dev$2', $version_constraint);
     }
 
     /*
