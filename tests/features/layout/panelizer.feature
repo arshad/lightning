@@ -11,7 +11,7 @@ Feature: Panelizer
     And I should not see a ".field--name-uid" element
     And I should not see a ".field--name-created" element
 
-  @javascript
+  @javascript @errors
   Scenario: One-off changes can be made to Landing Pages using the IPE out of the box.
     Given I am logged in as a user with the "access panels in-place editing,administer panelizer node landing_page content,edit any landing_page content,view any unpublished content,use draft_draft transition,view latest version,access user profiles" permissions
     And landing_page content:
@@ -24,7 +24,7 @@ Feature: Panelizer
     And I visit "/foobar"
     Then I should see a "views_block:who_s_online-who_s_online_block" block
 
-  @javascript
+  @javascript @errors
   Scenario: Quick-editing custom blocks in an IPE layout
     Given I am logged in as a user with the administrator role
     And landing_page content:
@@ -40,7 +40,7 @@ Feature: Panelizer
     And I wait 5 seconds
     Then I should see a "block_content:test--here-be-dragons" block with a "quickedit" contextual link
 
-  @javascript
+  @javascript @errors
   Scenario: Editing layouts does not affect other layouts if the user has not saved the edited layout as default
     Given I am logged in as a user with the administrator role
     And landing_page content:
@@ -54,7 +54,7 @@ Feature: Panelizer
     # I should not see the block placed by the first landing page
     Then I should not see a "views_block:who_s_online-who_s_online_block" block
 
-  @javascript
+  @javascript @errors
   Scenario: Changing layouts through the IPE
     Given users:
       | name | mail          | roles                               |
