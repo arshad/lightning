@@ -44,8 +44,7 @@ class ViewsData {
       return (
         $entity_type instanceof ContentEntityTypeInterface &&
         $entity_type->isRevisionable() &&
-        $entity_type->hasHandlerClass('views_data') &&
-        $entity_type->hasKey('status')
+        $entity_type->hasHandlerClass('views_data')
       );
     };
     /** @var ContentEntityTypeInterface[] $entity_types */
